@@ -1,0 +1,8 @@
+server:
+  port: 9080
+spring:
+  data:
+    mongodb:
+      database: paguitos
+      port: 27017
+      host: localhost
