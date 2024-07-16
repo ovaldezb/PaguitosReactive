@@ -1,7 +1,6 @@
 package com.ovaldez.paguitos.controller;
 
 import com.ovaldez.paguitos.dto.Cliente;
-import com.ovaldez.paguitos.repository.ClienteRepository;
 import com.ovaldez.paguitos.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
