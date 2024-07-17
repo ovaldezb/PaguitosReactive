@@ -14,8 +14,6 @@ public class Cliente {
     @Id
     private String id;
     private String nombre;
-    private String apellidoP;
-    private String apellidoM;
     private String telefono;
     private String correoElectronico;
     private String direccion;

@@ -31,17 +31,29 @@ public class CreditoService implements CreditoInterface {
                 });
     }
 
+    public Flux<Credito> getCreditoByStatus(boolean flag){
+        return creditoRepository.findByIsPagado(flag)
+                .flatMap(credito -> {
+                    return Mono.just(credito)
+                            .zipWith(clienteRepository.findById(credito.getIdCliente()),(u,p)->{
+                                u.setCliente(p);
+                                return u;
+                            });
+                });
+    }
+
     public Mono<Credito> addCredito(Credito credito){
         return creditoRepository.insert(credito);
     }
 
-    public Mono<Credito> addPago(String idCredito, Pago pago){
+    public Mono<Credito> addPago(String idCredito, Pago pago, boolean flag){
         return creditoRepository
                 .findById(idCredito)
                 .map(credito -> {
                     List<Pago> listaPagos = credito.getPagos();
                     listaPagos.add(pago);
                     credito.setPagos(listaPagos);
+                    credito.setPagado(flag);
                     return credito;
                 })
                 .flatMap(c ->{

@@ -11,23 +11,30 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/credito")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CreditoController {
     @Autowired
     private CreditoService creditoService;
 
     @GetMapping
-    public ResponseEntity<Flux<Credito>> getAllCreditos(){
-        return ResponseEntity.ok(creditoService.getAllCreditos());
+    public ResponseEntity<Flux<Credito>> getCreditosActivos(){
+        return ResponseEntity.ok(creditoService.getCreditoByStatus(false));
     }
 
+    @GetMapping("/todos")
+    public ResponseEntity<Flux<Credito>> getAllCreditods(){
+        System.out.println("todos");
+        return ResponseEntity.ok(creditoService.getAllCreditos());
+    }
     @PostMapping
     public ResponseEntity<Mono<Credito>> addCredito(@RequestBody Credito credito){
+        System.out.println(credito);
         return ResponseEntity.ok(creditoService.addCredito(credito));
     }
 
-    @PutMapping("/{idCredito}")
-    public ResponseEntity<Mono<Credito>> addPago(@PathVariable final String idCredito, @RequestBody Pago pago){
-        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago));
+    @PutMapping("/{idCredito}/{flag}")
+    public ResponseEntity<Mono<Credito>> addPago(@PathVariable final String idCredito, @PathVariable final String flag, @RequestBody Pago pago){
+        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago, Boolean.valueOf(flag)));
     }
 
     @DeleteMapping("/{idCredito}")

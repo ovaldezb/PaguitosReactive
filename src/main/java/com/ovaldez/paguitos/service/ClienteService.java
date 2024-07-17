@@ -31,8 +31,8 @@ public class ClienteService implements ClienteInterface {
     }
 
     private Cliente updateClienteBody(Cliente clienteUpdted, Cliente clienteOriginal){
-        clienteUpdted.setApellidoM(clienteOriginal.getApellidoM());
-        clienteUpdted.setApellidoP(clienteOriginal.getApellidoP());
+        //clienteUpdted.setApellidoM(clienteOriginal.getApellidoM());
+        //clienteUpdted.setApellidoP(clienteOriginal.getApellidoP());
         clienteUpdted.setNombre(clienteOriginal.getNombre());
         clienteUpdted.setDireccion(clienteOriginal.getDireccion());
         clienteUpdted.setTelefono(clienteOriginal.getTelefono());

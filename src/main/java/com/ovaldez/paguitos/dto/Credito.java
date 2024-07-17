@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -23,7 +24,10 @@ public class Credito {
     private Cliente cliente;
     private int noPagosTotales;
     private double enganche;
+    private double pago;
     private List<Pago> pagos;
     private String plazoPago;
+    private boolean isPagado;
+    private Date fechaOpenCredito;
 
 }
