@@ -21,6 +21,13 @@ public class ClientController {
         return ResponseEntity.ok(clienteService.getAllClientes());
     }
 
+    @GetMapping("/{nombre}")
+    public ResponseEntity<Flux<Cliente>> getClientesByName(@PathVariable String nombre){
+        return ResponseEntity.ok(this.clienteService.getClientesByName(nombre));
+    }
+
+
+
     @PostMapping
     public ResponseEntity<Mono<Cliente>> createCliente(@RequestBody Cliente cliente){
         return ResponseEntity.ok(clienteService.saveCliente(cliente));

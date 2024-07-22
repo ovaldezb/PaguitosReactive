@@ -8,7 +8,9 @@ import reactor.core.publisher.Mono;
 public interface CreditoInterface {
     Flux<Credito> getAllCreditos();
     Mono<Credito> addCredito(Credito credito);
-    Mono<Credito> addPago(String idCredito, Pago pago, boolean flag);
+    Mono<Credito> addPago(String idCredito, Pago pago, boolean flag, String adeudo);
     Mono<Void> removeCredito(String idCredito);
     Flux<Credito> getCreditoByStatus(boolean flag);
+
+    Mono<Credito> getCreditoById(String idCredito);
 }

@@ -6,3 +6,8 @@ spring:
       database: paguitos
       port: 27017
       host: localhost
+  mail:
+    host: smtp.tdm.mx
+    port: 587
+    username: reparaciones@tdm.mx
+    password: Marcio123

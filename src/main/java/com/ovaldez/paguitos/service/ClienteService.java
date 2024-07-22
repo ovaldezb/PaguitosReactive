@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.print.FlavorException;
+
 
 @Service
 public class ClienteService implements ClienteInterface {
@@ -18,6 +20,9 @@ public class ClienteService implements ClienteInterface {
         return clienteRepository.findAll();
     }
 
+    public Mono<Cliente> getClienteById(String idCliente){
+        return clienteRepository.findById(idCliente);
+    }
     public Mono<Cliente> saveCliente(Cliente cliente){
         return clienteRepository.save(cliente);
     }
@@ -26,6 +31,9 @@ public class ClienteService implements ClienteInterface {
         return this.clienteRepository.findById(idCliente).map(c -> updateClienteBody(c, cliente)).flatMap(clienteRepository::save);
     }
 
+    public Flux<Cliente> getClientesByName(String nombre){
+        return this.clienteRepository.findByNombre(nombre);
+    }
     public Mono<Void> deleteCliente(String idCliente){
         return clienteRepository.deleteById(idCliente);
     }

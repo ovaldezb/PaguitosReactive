@@ -3,6 +3,7 @@ package com.ovaldez.paguitos.controller;
 import com.ovaldez.paguitos.dto.Credito;
 import com.ovaldez.paguitos.dto.Pago;
 import com.ovaldez.paguitos.service.CreditoService;
+import com.ovaldez.paguitos.service.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,23 +19,21 @@ public class CreditoController {
 
     @GetMapping
     public ResponseEntity<Flux<Credito>> getCreditosActivos(){
-        return ResponseEntity.ok(creditoService.getCreditoByStatus(false));
+        return ResponseEntity.ok(creditoService.getCreditoByStatus(false) );
     }
 
     @GetMapping("/todos")
     public ResponseEntity<Flux<Credito>> getAllCreditods(){
-        System.out.println("todos");
         return ResponseEntity.ok(creditoService.getAllCreditos());
     }
     @PostMapping
     public ResponseEntity<Mono<Credito>> addCredito(@RequestBody Credito credito){
-        System.out.println(credito);
         return ResponseEntity.ok(creditoService.addCredito(credito));
     }
 
-    @PutMapping("/{idCredito}/{flag}")
-    public ResponseEntity<Mono<Credito>> addPago(@PathVariable final String idCredito, @PathVariable final String flag, @RequestBody Pago pago){
-        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago, Boolean.valueOf(flag)));
+    @PutMapping("/{idCredito}/{flag}/{adeudo}")
+    public ResponseEntity<Mono<Credito>> addPago(@PathVariable final String idCredito, @PathVariable final String flag, @PathVariable final String adeudo, @RequestBody Pago pago){
+        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago, Boolean.valueOf(flag), adeudo));
     }
 
     @DeleteMapping("/{idCredito}")

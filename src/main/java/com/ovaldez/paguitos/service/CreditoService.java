@@ -42,11 +42,22 @@ public class CreditoService implements CreditoInterface {
                 });
     }
 
+    public Mono<Credito> getCreditoById(String idCredito){
+        return creditoRepository.findById(idCredito)
+                .flatMap(credito -> {
+                    return Mono.just(credito)
+                            .zipWith(clienteRepository.findById(credito.getIdCliente()),(u,p)->{
+                                u.setCliente(p);
+                                return u;
+                            });
+                });
+    }
+
     public Mono<Credito> addCredito(Credito credito){
         return creditoRepository.insert(credito);
     }
 
-    public Mono<Credito> addPago(String idCredito, Pago pago, boolean flag){
+    public Mono<Credito> addPago(String idCredito, Pago pago, boolean flag, String adeudo){
         return creditoRepository
                 .findById(idCredito)
                 .map(credito -> {
@@ -54,6 +65,7 @@ public class CreditoService implements CreditoInterface {
                     listaPagos.add(pago);
                     credito.setPagos(listaPagos);
                     credito.setPagado(flag);
+                    credito.setAdeudo(adeudo);
                     return credito;
                 })
                 .flatMap(c ->{
