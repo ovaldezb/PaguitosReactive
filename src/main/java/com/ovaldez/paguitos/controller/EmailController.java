@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/email")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8080")
 public class EmailController {
 
     @Autowired
