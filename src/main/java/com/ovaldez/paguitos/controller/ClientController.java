@@ -39,7 +39,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{idCliente}")
-    public ResponseEntity<Mono<Void>> deleteCliente(@PathVariable final String idCliente){
+    public ResponseEntity<Mono<Cliente>> deleteCliente(@PathVariable final String idCliente){
         return ResponseEntity.ok(clienteService.deleteCliente(idCliente));
     }
 

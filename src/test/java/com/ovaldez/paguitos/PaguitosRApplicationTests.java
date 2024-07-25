@@ -39,13 +39,13 @@ class PaguitosRApplicationTests {
 
 	@BeforeAll
 	public void  init(){
-		cliente1 = new Cliente("1","Juan Perez Gomez","8523697412","correo@correo.com","Av de las Partidas 24");
-		cliente2 = new Cliente("1","Oscar Diaz Juarez","9874456321","email@correo.com","Av de las Partidas 34");
+		cliente1 = new Cliente("1","Juan Perez Gomez","8523697412","correo@correo.com","Av de las Partidas 24",true);
+		cliente2 = new Cliente("1","Oscar Diaz Juarez","9874456321","email@correo.com","Av de las Partidas 34",true);
 	}
 
 	@Test
 	void addClientTest() {
-		Mono<Cliente> clienteMono = Mono.just(new Cliente("1","Juan Perez Gomez","8523697412","correo@correo.com","Av de las Partidas 24"));
+		Mono<Cliente> clienteMono = Mono.just(new Cliente("1","Juan Perez Gomez","8523697412","correo@correo.com","Av de las Partidas 24",true));
 		when(clienteService.saveCliente(cliente1)).thenReturn(clienteMono);
 		webTestClient.post()
 				.uri("/api/cliente")

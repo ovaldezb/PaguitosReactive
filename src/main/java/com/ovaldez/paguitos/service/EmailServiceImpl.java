@@ -125,7 +125,7 @@ public class EmailServiceImpl {
                 "        </tr>\n" +
                 "        <tr>\n" +
                 "          <td style=\"font-family: Verdana, Geneva, Tahoma, sans-serif;\">Pagos:</td>\n" +
-                "          <td>"+credito.getNoPagosTotales()+" pagos "+credito.getPlazoPago()+" de "+credito.getPago()+"</td>\n" +
+                "          <td>"+credito.getNoPagosTotales()+" pagos "+credito.getPlazoPago()+" de "+decimalFormat.format(credito.getPago())+"</td>\n" +
                 "        </tr>\n" +
                 "      </tbody>\n" +
                 "    </table>\n" +

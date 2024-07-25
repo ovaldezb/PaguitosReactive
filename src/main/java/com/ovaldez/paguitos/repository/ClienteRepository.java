@@ -7,6 +7,6 @@ import reactor.core.publisher.Flux;
 
 public interface ClienteRepository extends ReactiveMongoRepository<Cliente, String> {
 
-    @Query("{'nombre': { $regex: ?0, $options:'i' }}")
-    Flux<Cliente> findByNombre(String nombre);
+    @Query(value = "{'$and':[{'nombre': { $regex: ?0, $options:'i' }},{'isActive':{$eq:?1}}]}")
+    Flux<Cliente> findByNombreAndActive(String nombre,boolean flag);
 }

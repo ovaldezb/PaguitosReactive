@@ -29,6 +29,6 @@ public class Credito {
     private String plazoPago;
     private boolean isPagado;
     private Date fechaOpenCredito;
-    private String adeudo;
+    private double adeudo;
 
 }

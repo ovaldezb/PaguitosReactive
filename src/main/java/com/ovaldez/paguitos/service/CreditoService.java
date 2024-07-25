@@ -57,7 +57,7 @@ public class CreditoService implements CreditoInterface {
         return creditoRepository.insert(credito);
     }
 
-    public Mono<Credito> addPago(String idCredito, Pago pago, boolean flag, String adeudo){
+    public Mono<Credito> addPago(String idCredito, Pago pago, boolean flag, double adeudo){
         return creditoRepository
                 .findById(idCredito)
                 .map(credito -> {

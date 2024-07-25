@@ -14,4 +14,5 @@ public class Pago {
 
     private Date fechaPago;
     private double montoPago;
+    private String nota;
 }

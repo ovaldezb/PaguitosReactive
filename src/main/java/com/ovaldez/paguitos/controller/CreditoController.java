@@ -33,7 +33,7 @@ public class CreditoController {
 
     @PutMapping("/{idCredito}/{flag}/{adeudo}")
     public ResponseEntity<Mono<Credito>> addPago(@PathVariable final String idCredito, @PathVariable final String flag, @PathVariable final String adeudo, @RequestBody Pago pago){
-        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago, Boolean.valueOf(flag), adeudo));
+        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago, Boolean.valueOf(flag), Double.parseDouble(adeudo)));
     }
 
     @DeleteMapping("/{idCredito}")

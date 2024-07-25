@@ -17,7 +17,7 @@ public class ClienteService implements ClienteInterface {
     @Autowired
     private ClienteRepository clienteRepository;
     public Flux<Cliente> getAllClientes(){
-        return clienteRepository.findAll();
+        return clienteRepository.findAll().filter(cliente -> cliente.getIsActive());
     }
 
     public Mono<Cliente> getClienteById(String idCliente){
@@ -32,10 +32,17 @@ public class ClienteService implements ClienteInterface {
     }
 
     public Flux<Cliente> getClientesByName(String nombre){
-        return this.clienteRepository.findByNombre(nombre);
+        return this.clienteRepository.findByNombreAndActive(nombre, true);
     }
-    public Mono<Void> deleteCliente(String idCliente){
-        return clienteRepository.deleteById(idCliente);
+    public Mono<Cliente> deleteCliente(String idCliente){
+        return clienteRepository.findById(idCliente)
+                .map(cliente ->{
+                    cliente.setIsActive(false);
+                    return cliente;
+                }).flatMap( cliente ->{
+                            return clienteRepository.save(cliente);
+                    }
+                );
     }
 
     private Cliente updateClienteBody(Cliente clienteUpdted, Cliente clienteOriginal){
