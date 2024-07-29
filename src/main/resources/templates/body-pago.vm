@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <style>
+      .tableEquipo {
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
+        width: 30%;
+        background-color: rgb(229, 238, 244);
+      }
+      .tablaCredito{
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
+        width: 30%;
+        background-color: rgb(218, 242, 234);
+      }
+    </style>
+  </head>
+  <body>
+    Hola <strong>$nombre</strong> gracias por comprar con nosotros, éste es un recordatorio de tu próximo pago el dia <strong>$fechaPago</strong>.
+    <p>Este es el equipo que has adquirido:</p>
+
+    <table class="tableEquipo">
+      <tbody>
+        <tr>
+          <td style="border-bottom: 1px solid black; text-align: center;font-family: Verdana, Geneva, Tahoma, sans-serif;">Marca:</td>
+          <td style="border-bottom: 1px solid black; text-align: left;">$marca</td>
+        </tr>
+        <tr>
+          <td style="border-bottom: 1px solid black; text-align: center;font-family: Verdana, Geneva, Tahoma, sans-serif;">Modelo:</td>
+          <td style="border-bottom: 1px solid black; text-align: left;">$modelo</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;font-family: Verdana, Geneva, Tahoma, sans-serif;">No Serie:</td>
+          <td style="text-align: left;">$noSerie</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Los datos de tu crédito son:</p>
+    <table class="tablaCredito">
+      <tbody>
+        <tr>
+          <td style="border-bottom: 1px solid black;font-family: Verdana, Geneva, Tahoma, sans-serif;">Costo:</td>
+          <td style="border-bottom: 1px solid black;">$costo</td>
+        </tr>
+        <tr>
+          <td style="border-bottom: 1px solid black;font-family: Verdana, Geneva, Tahoma, sans-serif;">Enganche:</td>
+          <td style="border-bottom: 1px solid black">$enganche</td>
+        </tr>
+        <tr>
+          <td style="border-bottom: 1px solid black;font-family: Verdana, Geneva, Tahoma, sans-serif;">Adeudo:</td>
+          <td style="border-bottom: 1px solid black">$adeudo</td>
+        </tr>
+        <tr>
+          <td style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Pagos Pendientes:</td>
+          <td>$pagPend</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

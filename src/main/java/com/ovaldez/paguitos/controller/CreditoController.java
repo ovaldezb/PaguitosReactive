@@ -3,7 +3,6 @@ package com.ovaldez.paguitos.controller;
 import com.ovaldez.paguitos.dto.Credito;
 import com.ovaldez.paguitos.dto.Pago;
 import com.ovaldez.paguitos.service.CreditoService;
-import com.ovaldez.paguitos.service.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/credito")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = {"http://localhost:8080","http://localhost:4200"})
 public class CreditoController {
     @Autowired
     private CreditoService creditoService;
@@ -33,7 +32,7 @@ public class CreditoController {
 
     @PutMapping("/{idCredito}/{flag}/{adeudo}")
     public ResponseEntity<Mono<Credito>> addPago(@PathVariable final String idCredito, @PathVariable final String flag, @PathVariable final String adeudo, @RequestBody Pago pago){
-        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago, Boolean.valueOf(flag), Double.parseDouble(adeudo)));
+        return  ResponseEntity.ok(creditoService.addPago(idCredito,pago, Boolean.parseBoolean(flag), Double.parseDouble(adeudo)));
     }
 
     @DeleteMapping("/{idCredito}")
