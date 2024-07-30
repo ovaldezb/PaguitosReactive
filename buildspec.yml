@@ -19,8 +19,8 @@ phases:
     commands:
       - echo build completed on ´date´
       - echo pushing to repo
-      - docker push $REPOSITORY_UNIT:latest
-      - docker push $REPOSITORY_UNIT:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo writing image definitions file...
       - DOCKER_CONTAINER_NAME=spring-demo-ecr-container
       - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
