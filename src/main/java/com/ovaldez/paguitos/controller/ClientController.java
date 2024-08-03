@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/cliente")
-@CrossOrigin(origins = {"http://localhost:8080","http://localhost:4200"})
+@CrossOrigin(origins = "http://localhost:8080")
 public class ClientController {
 
     @Autowired
