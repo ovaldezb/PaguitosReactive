@@ -1,8 +1,14 @@
 version: 0.2
+env:
+  secrets-manager:
+    DOCKER_HUB_PASS: "CHnMqs7@hNhNM%V"
+    DOCKER_HUB_USERNAME: "ovaldezb"
 phases:
   pre_build:
     commands:
       - echo Logging in the Amazon ECR
+      - echo docker login
+      - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASS
       - aws --version
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 121162867777.dkr.ecr.us-east-2.amazonaws.com
       - REPOSITORY_URI=121162867777.dkr.ecr.us-east-2.amazonaws.com/spring-demo-ecr
